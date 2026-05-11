@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commerce Rewired | Speaker Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Open+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark:    #111d25;
+      --bg-mid:     #182330;
+      --bg-card:    #1e2d3a;
+      --bg-teal:    #1a3040;
+
+      --sky-blue:   #AEC8D4;
+      --tan:        #C47A3A;
+      --blue-grey:  #4A7386;
+      --ice-blue:   #d6ecf3;
+      --muted:      #4A7386;
+
+      --font-heading: 'Oswald', sans-serif;
+      --font-body:    'Open Sans', sans-serif;
+
+      --sz-h1:   3.125rem;
+      --sz-h2:   3.125rem;
+      --sz-sub:  1.875rem;
+      --sz-h3:   2.1875rem;
+      --sz-body: 1.375rem;
+      --sz-sm:   1.1875rem;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-dark);
+      color: var(--ice-blue);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: var(--sz-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(24,32,40,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(126,200,227,0.12);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo-img { height: 48px; width: auto; display: block; }
+    .nav-logo-text {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 1.35rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky-blue); text-decoration: none;
+    }
+    .nav-logo-text span { color: var(--tan); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 0.92rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue-grey); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sky-blue); }
+    .nav-cta {
+      background: var(--tan) !important;
+      color: var(--bg-dark) !important;
+      padding: 0.45rem 1.3rem; border-radius: 3px;
+    }
+    .nav-cta:hover { opacity: 0.84 !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--sky-blue); border-radius: 2px; }
+
+    /* ── HERO / LEAD CAPTURE ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 0 5%;
+      padding-top: 72px;
+      background: linear-gradient(140deg, var(--bg-dark) 0%, var(--bg-teal) 55%, var(--bg-mid) 100%);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 700px 600px at 85% 45%, rgba(126,200,227,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 350px 350px at 10% 75%, rgba(201,169,122,0.06) 0%, transparent 70%);
+    }
+    .hero-ring {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      border: 1.5px solid rgba(126,200,227,0.09);
+    }
+    .hero-ring-1 { width: 560px; height: 560px; top: -60px; right: -120px; }
+    .hero-ring-2 { width: 320px; height: 320px; top: 90px; right: 100px; border-color: rgba(201,169,122,0.07); }
+    .hero-ring-3 { width: 220px; height: 220px; bottom: 60px; left: -60px; border-color: rgba(126,200,227,0.06); }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center; width: 100%;
+      padding: 6rem 0;
+    }
+
+    /* LEFT COLUMN */
+    .hero-eyebrow {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-sub); letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: clamp(2.8rem, 6vw, var(--sz-h1));
+      line-height: 1.05; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--sky-blue); margin-bottom: 1.6rem;
+    }
+    h1 .accent { color: var(--tan); }
+    .hero-sub {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: clamp(1.05rem, 1.8vw, var(--sz-body));
+      color: var(--ice-blue); margin-bottom: 2.6rem; line-height: 1.8;
+    }
+
+    /* Proof stats */
+    .proof-row { display: flex; gap: 0; border-top: 1px solid rgba(126,200,227,0.12); padding-top: 2rem; }
+    .proof-item { flex: 1; padding-right: 2rem; }
+    .proof-item + .proof-item { border-left: 1px solid rgba(126,200,227,0.1); padding-left: 2rem; padding-right: 0; }
+    .proof-num {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-h2); color: var(--sky-blue); line-height: 1;
+    }
+    .proof-num span { color: var(--tan); }
+    .proof-label {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 0.95rem; color: var(--muted); letter-spacing: 0.04em;
+      margin-top: 0.3rem; text-transform: uppercase;
+    }
+
+    /* RIGHT COLUMN — form card */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(126,200,227,0.1);
+      border-top: 3px solid var(--tan);
+      padding: 3.2rem 3rem;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+    .form-label-section {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 0.88rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 0.6rem;
+    }
+    .form-title {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: clamp(1.6rem, 2.5vw, var(--sz-sub));
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--sky-blue); margin-bottom: 0.6rem; line-height: 1.1;
+    }
+    .form-desc {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-sm); color: var(--ice-blue);
+      line-height: 1.7; margin-bottom: 2.4rem;
+      opacity: 0.8;
+    }
+
+    .field { margin-bottom: 1.6rem; }
+    .field label {
+      display: block;
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-grey); margin-bottom: 0.5rem;
+    }
+    .field input {
+      width: 100%;
+      background: rgba(17,29,37,0.7);
+      border: 1px solid rgba(126,200,227,0.2);
+      border-bottom: 2px solid rgba(126,200,227,0.25);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-sm); color: var(--ice-blue);
+      outline: none; transition: border-color 0.2s, background 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .field input::placeholder { color: rgba(214,236,243,0.25); }
+    .field input:focus {
+      border-color: rgba(196,122,58,0.5);
+      border-bottom-color: var(--tan);
+      background: rgba(17,29,37,0.9);
+    }
+    .field input.error { border-bottom-color: #e05a5a; }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; padding: 0.9rem 2.2rem; border-radius: 3px;
+      transition: all 0.22s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--tan); color: var(--bg-dark); }
+    .btn-primary:hover { opacity: 0.84; transform: translateY(-2px); }
+    .btn-full { width: 100%; text-align: center; padding: 1rem 2rem; font-size: 1.05rem; }
+
+    .form-note {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 0.9rem; color: var(--muted); margin-top: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Success state */
+    .success-state {
+      display: none; text-align: center; padding: 1rem 0;
+    }
+    .success-icon {
+      width: 64px; height: 64px; margin: 0 auto 1.6rem;
+      border: 2px solid var(--tan); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .success-icon::after {
+      content: '✓';
+      font-family: var(--font-heading);
+      font-size: 1.8rem; color: var(--tan);
+    }
+    .success-title {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-sub); letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--sky-blue); margin-bottom: 0.8rem;
+    }
+    .success-body {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-sm); color: var(--ice-blue);
+      line-height: 1.8; opacity: 0.85;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside { background: var(--bg-mid); padding: 7rem 5%; }
+    .section-label {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 0.88rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 0.7rem;
+    }
+    h2 {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: clamp(2rem, 5vw, var(--sz-h2));
+      line-height: 1.05; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--sky-blue); margin-bottom: 1.4rem;
+    }
+    h2 .accent { color: var(--tan); }
+    .section-intro {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-body); color: var(--ice-blue);
+      max-width: 640px; line-height: 1.8;
+    }
+    .inside-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; margin-top: 4rem;
+    }
+    .inside-card {
+      background: var(--bg-card); padding: 2.8rem 2.4rem;
+      position: relative; overflow: hidden; transition: transform 0.3s;
+    }
+    .inside-card:hover { transform: translateY(-6px); }
+    .inside-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--sky-blue);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .inside-card:hover::before { transform: scaleX(1); }
+    .inside-num {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 4.5rem; color: rgba(126,200,227,0.08); line-height: 1; margin-bottom: 1rem;
+    }
+    .inside-card .sub-heading {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-h3); text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--blue-grey); margin-bottom: 0.8rem; line-height: 1.15;
+    }
+    .inside-card p.body {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-sm); color: var(--ice-blue); line-height: 1.8;
+    }
+
+    /* ── WHO WE ARE ── */
+    .who { background: var(--bg-dark); padding: 7rem 5%; }
+    .diff-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .diff-arrow {
+      flex-shrink: 0; width: 22px; height: 22px; background: var(--tan);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin-top: 5px;
+    }
+    .diff-arrow::after { content: '→'; font-size: 0.65rem; color: var(--bg-dark); }
+    .diff-text {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-sm); color: var(--ice-blue); line-height: 1.75;
+    }
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; }
+
+    /* ── TOPICS ── */
+    .topics { background: var(--bg-teal); padding: 7rem 5%; }
+    .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 4rem; }
+    .topic-card {
+      background: rgba(27,52,68,0.65);
+      padding: 2rem 1.8rem;
+      border-top: 3px solid var(--sky-blue);
+      transition: transform 0.3s;
+    }
+    .topic-card:hover { transform: translateY(-4px); }
+    .topic-card p {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-sub); text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--blue-grey); line-height: 1.15;
+    }
+
+    /* ── CTA BOTTOM ── */
+    .cta-bottom {
+      background: linear-gradient(140deg, var(--bg-teal) 0%, var(--bg-mid) 100%);
+      text-align: center; position: relative; overflow: hidden;
+      padding: 7rem 5%;
+    }
+    .cta-bottom::before {
+      content: ''; position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+      width: 650px; height: 650px; border-radius: 50%;
+      border: 1.5px solid rgba(126,200,227,0.09);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-bottom .body-copy {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: var(--sz-body); color: var(--ice-blue);
+      margin-bottom: 2.5rem; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.8;
+    }
+    .contact-email {
+      display: inline-block; margin-top: 1rem;
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: var(--sz-sub); letter-spacing: 0.08em;
+      color: var(--sky-blue); text-decoration: none;
+      border-bottom: 2px solid var(--tan); padding-bottom: 2px; transition: color 0.2s;
+    }
+    .contact-email:hover { color: var(--tan); }
+    .btn-outline {
+      background: transparent; color: var(--sky-blue);
+      border: 1.5px solid rgba(126,200,227,0.35);
+    }
+    .btn-outline:hover { border-color: var(--sky-blue); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f161c;
+      padding: 2rem 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo-text {
+      font-family: var(--font-heading); font-weight: 400;
+      font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky-blue);
+    }
+    .footer-logo-text span { color: var(--tan); }
+    footer p {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 0.85rem; color: var(--muted);
+    }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .hero-content-left { animation: fadeUp 0.9s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 72px; left: 0; right: 0;
+        background: var(--bg-teal); padding: 1.5rem 5%; gap: 1.2rem;
+        border-bottom: 2px solid var(--tan);
+      }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .who-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .inside-grid { grid-template-columns: 1fr; }
+      .topics-grid { grid-template-columns: repeat(2,1fr); }
+      :root { --sz-h2: 2.4rem; --sz-h3: 1.7rem; --sz-sub: 1.45rem; --sz-body: 1.2rem; }
+    }
+    @media (max-width: 560px) {
+      .topics-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 2rem 1.5rem; }
+      .proof-row { flex-direction: column; gap: 1.5rem; }
+      .proof-item + .proof-item { border-left: none; border-top: 1px solid rgba(126,200,227,0.1); padding-left: 0; padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="Commerce_Rewired_Branding.png" alt="Commerce Rewired" class="nav-logo-img"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+    <span class="nav-logo-text" style="display:none;">Commerce<span>.</span>Rewired</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="#get-kit" class="nav-cta">Get the Kit</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO + FORM -->
+<section class="hero" id="home">
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="hero-ring hero-ring-3"></div>
+
+  <div class="hero-inner">
+
+    <!-- LEFT: Positioning copy -->
+    <div class="hero-content-left">
+      <p class="hero-eyebrow">Speaker Collective — 2025</p>
+      <h1>Conversations that<br><span class="accent">move retail</span><br>forward.</h1>
+      <p class="hero-sub">Commerce Rewired is a curated collective of active retail operators, strategists, and industry voices. Not career speakers. The people shaping the industry — who also happen to command a room.</p>
+
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="proof-num">40<span>+</span></div>
+          <div class="proof-label">Events annually</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">9</div>
+          <div class="proof-label">Topic areas</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">5</div>
+          <div class="proof-label">Formats offered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Lead capture form -->
+    <div class="form-card" id="get-kit">
+
+      <div id="form-wrap">
+        <p class="form-label-section">Speaker Kit</p>
+        <p class="form-title">Download the<br>full kit</p>
+        <p class="form-desc">Bios, topic areas, formats, and past events — everything your committee needs. No pitch. No drip campaign. Just the kit.</p>
+
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input type="text" id="f-name" placeholder="First and last name" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="f-email">Work email</label>
+          <input type="email" id="f-email" placeholder="you@company.com" autocomplete="email" />
+        </div>
+
+        <button class="btn btn-primary btn-full" id="submit-btn">Download the Speaker Kit</button>
+
+        <p class="form-note">We'll reach out only if you ask. Your information is never shared.</p>
+      </div>
+
+      <div class="success-state" id="success-state">
+        <div class="success-icon"></div>
+        <p class="form-label-section">You're all set</p>
+        <p class="success-title">Kit is on its way.</p>
+        <p class="success-body">Check your inbox. If you want to talk about an upcoming event, just reply to that email — we'll take it from there.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside" id="inside">
+  <div class="reveal">
+    <p class="section-label">The Speaker Kit</p>
+    <h2>What You'll <span class="accent">Find Inside</span></h2>
+    <p class="section-intro">A complete picture of the collective — built for conference organizers, event producers, and association programming teams.</p>
+  </div>
+  <div class="inside-grid reveal">
+    <div class="inside-card">
+      <div class="inside-num">01</div>
+      <p class="sub-heading">Speaker Profiles</p>
+      <p class="body">Concise bios, positioning statements, expertise areas, and notable events for each member of the collective. Sharp, not padded.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">02</div>
+      <p class="sub-heading">Topics & Formats</p>
+      <p class="body">From keynotes and fireside chats to executive moderation, roundtables, and private dinners — every format we support, with topic areas mapped out.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">03</div>
+      <p class="sub-heading">Events & Media</p>
+      <p class="body">Past conferences, podcast appearances, moderation credits, and industry partnerships. The receipts that tell the story better than we can.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="who">
+  <div class="reveal">
+    <p class="section-label">Why Commerce Rewired</p>
+    <h2>Operators.<br><span class="accent">Not Career Speakers.</span></h2>
+    <p class="section-intro">The difference between a good panel and a great one is who's actually been in the room where decisions get made.</p>
+  </div>
+  <div class="who-grid reveal">
+    <div>
+      <div style="margin-bottom:2.5rem">
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:var(--sz-h3);text-transform:uppercase;letter-spacing:0.06em;color:var(--blue-grey);margin-bottom:0.8rem;">Real Industry Operators</p>
+        <p style="font-family:var(--font-body);font-weight:300;font-size:var(--sz-sm);color:var(--ice-blue);line-height:1.8;">Our team is actively advising brands, moderating industry panels, hosting podcasts, and leading executive discussions across Canada and beyond — not warming up greenrooms between gigs.</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:var(--sz-h3);text-transform:uppercase;letter-spacing:0.06em;color:var(--blue-grey);margin-bottom:0.8rem;">Conversations Over Presentations</p>
+        <p style="font-family:var(--font-body);font-weight:300;font-size:var(--sz-sm);color:var(--ice-blue);line-height:1.8;">We don't recycle decks. We bring current intelligence, sharp moderation, and the kind of direct insight that makes your audience lean forward — not scroll their phones.</p>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:var(--font-heading);font-weight:400;font-size:var(--sz-h3);text-transform:uppercase;letter-spacing:0.06em;color:var(--blue-grey);margin-bottom:1rem;">What We Bring to Your Stage</p>
+      <div class="diff-item"><div class="diff-arrow"></div><span class="diff-text">Decades of leadership in physical and digital retail operations</span></div>
+      <div class="diff-item"><div class="diff-arrow"></div><span class="diff-text">Active advisory relationships inside the Canadian retail ecosystem</span></div>
+      <div class="diff-item"><div class="diff-arrow"></div><span class="diff-text">Sharp moderation that elevates panels and drives real dialogue</span></div>
+      <div class="diff-item"><div class="diff-arrow"></div><span class="diff-text">Practical takeaways grounded in what's actually happening in retail right now</span></div>
+      <div class="diff-item"><div class="diff-arrow"></div><span class="diff-text">Executive-level credibility without the corporate stiffness</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPIC AREAS -->
+<section class="topics">
+  <div class="reveal">
+    <p class="section-label">Expertise Areas</p>
+    <h2>Topics That <span class="accent">Matter Now</span></h2>
+    <p class="section-intro">Nine areas of deep, current expertise — built around the conversations the retail industry actually needs.</p>
+  </div>
+  <div class="topics-grid reveal">
+    <div class="topic-card"><p>AI &amp; Future Commerce</p></div>
+    <div class="topic-card"><p>Ecommerce &amp; Digital Retail</p></div>
+    <div class="topic-card"><p>Customer Experience</p></div>
+    <div class="topic-card"><p>Retail Innovation</p></div>
+    <div class="topic-card"><p>Leadership &amp; Organizational Change</p></div>
+    <div class="topic-card"><p>Loyalty &amp; Consumer Behaviour</p></div>
+    <div class="topic-card"><p>Omnichannel Strategy</p></div>
+    <div class="topic-card"><p>Women in Leadership</p></div>
+    <div class="topic-card"><p>Retail Media &amp; Emerging Technology</p></div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <div class="cta-inner reveal">
+    <p class="section-label">Let's Talk</p>
+    <h2>Ready to <span class="accent">Elevate</span><br>Your Event?</h2>
+    <p class="body-copy">Have a specific event in mind? Skip the kit and reach out directly. We'll get back to you fast.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#get-kit" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 2.5rem;">Get the Speaker Kit</a>
+      <a href="mailto:hello@commercerewired.co" class="btn btn-outline" style="font-size:1.05rem;padding:1rem 2.5rem;">Email Us Directly</a>
+    </div>
+    <br>
+    <a href="mailto:hello@commercerewired.co" class="contact-email">hello@commercerewired.co</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="Commerce_Rewired_Branding.png" alt="Commerce Rewired" style="height:40px;width:auto;display:block;"
+    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+  <span class="footer-logo-text" style="display:none;">Commerce<span>.</span>Rewired</span>
+  <p>© 2026 Commerce Rewired. All rights reserved.</p>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 130);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.5)' : '';
+  });
+
+  // Form submit
+  document.getElementById('submit-btn').addEventListener('click', function() {
+    const nameEl  = document.getElementById('f-name');
+    const emailEl = document.getElementById('f-email');
+    let valid = true;
+
+    nameEl.classList.remove('error');
+    emailEl.classList.remove('error');
+
+    if (!nameEl.value.trim()) { nameEl.classList.add('error'); valid = false; }
+    if (!emailEl.value.trim() || !emailEl.value.includes('@')) { emailEl.classList.add('error'); valid = false; }
+
+    if (!valid) return;
+
+    // ── Swap to success state ──
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('success-state').style.display = 'block';
+
+    // ── Wire your delivery here (Mailchimp / ConvertKit / etc.) ──
+    // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ name: nameEl.value, email: emailEl.value }) });
+  });
+</script>
+</body>
+</html>
